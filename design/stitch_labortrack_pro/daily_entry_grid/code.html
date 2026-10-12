@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Daily Attendance Grid - LaborTrack Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#cfe6f2",
+                        "on-tertiary-fixed": "#390c00",
+                        "surface-dim": "#dbd9e1",
+                        "primary": "#000666",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f5f2fb",
+                        "surface-container-highest": "#e4e1ea",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#b4cad6",
+                        "on-primary-fixed": "#000767",
+                        "on-surface": "#1b1b21",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#454652",
+                        "surface-tint": "#4c56af",
+                        "primary-fixed": "#e0e0ff",
+                        "inverse-on-surface": "#f2eff8",
+                        "on-primary-container": "#8690ee",
+                        "on-secondary-container": "#526772",
+                        "outline": "#767683",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb59d",
+                        "surface-variant": "#e4e1ea",
+                        "inverse-surface": "#303036",
+                        "on-primary-fixed-variant": "#343d96",
+                        "tertiary-fixed": "#ffdbd0",
+                        "secondary": "#4c616c",
+                        "surface-container": "#efecf5",
+                        "secondary-fixed": "#cfe6f2",
+                        "background": "#fbf8ff",
+                        "inverse-primary": "#bdc2ff",
+                        "on-secondary-fixed": "#071e27",
+                        "outline-variant": "#c6c5d4",
+                        "surface-bright": "#fbf8ff",
+                        "surface-container-high": "#eae7ef",
+                        "on-secondary-fixed-variant": "#354a53",
+                        "on-tertiary-container": "#e17c5a",
+                        "tertiary": "#380b00",
+                        "tertiary-container": "#5c1800",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "on-tertiary-fixed-variant": "#7b2e12",
+                        "primary-container": "#1a237e",
+                        "surface": "#fbf8ff",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1b21"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "margin-tablet": "24px",
+                        "touch-target": "48px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { background-color: #F5F5F5; }
+        .grid-header-sticky { position: sticky; top: 64px; z-index: 40; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background antialiased pb-24">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 shadow-sm dark:shadow-none fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-4 h-14 md:h-16">
+<div class="flex items-center gap-4">
+<button class="hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors p-2 rounded-lg active:opacity-70">
+<span class="material-symbols-outlined text-indigo-900 dark:text-indigo-400">menu</span>
+</button>
+<h1 class="text-lg font-black tracking-tight text-indigo-900 dark:text-indigo-100">LaborTrack Pro</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="hidden md:block font-inter antialiased text-sm tracking-wide font-medium text-zinc-600">Daily Attendance - Jan 14, 2026</span>
+<button class="hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors p-2 rounded-lg active:opacity-70">
+<span class="material-symbols-outlined text-indigo-900 dark:text-indigo-400">filter_list</span>
+</button>
+</div>
+</div>
+</header>
+<main class="mt-16 px-4 md:px-8 max-w-7xl mx-auto py-6">
+<!-- Sub-Header Mobile -->
+<div class="md:hidden mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Daily Attendance</h2>
+<p class="font-label-lg text-label-lg text-on-surface-variant">Tuesday, Jan 14, 2026</p>
+</div>
+<!-- Excel-Like Grid Layout -->
+<div class="bg-white rounded-xl shadow-sm overflow-hidden border border-outline-variant">
+<!-- Grid Header -->
+<div class="hidden md:grid grid-cols-12 bg-surface-container-low border-b border-outline-variant px-4 py-3 font-label-lg text-label-lg text-on-surface-variant">
+<div class="col-span-3">Worker Details</div>
+<div class="col-span-3 text-center">Attendance</div>
+<div class="col-span-2 text-center">Overtime</div>
+<div class="col-span-2 text-center">Advance (Upad)</div>
+<div class="col-span-2 text-right">Daily Payout</div>
+</div>
+<!-- Grid Body (Rows) -->
+<div class="divide-y divide-outline-variant">
+<!-- Worker Row 1 -->
+<div class="grid grid-cols-1 md:grid-cols-12 items-center px-4 py-4 gap-4 md:gap-0 hover:bg-surface-container-lowest transition-colors">
+<div class="col-span-3 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold">RJ</div>
+<div>
+<p class="font-title-lg text-body-lg font-bold text-on-surface">Rajesh Kumar</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Lead Mason • #WM-402</p>
+</div>
+</div>
+<div class="col-span-3">
+<div class="flex bg-surface-container-high rounded-lg p-1 w-full max-w-[280px] mx-auto">
+<button class="flex-1 py-2 text-label-md font-bold rounded-lg bg-white shadow-sm text-primary">Full</button>
+<button class="flex-1 py-2 text-label-md font-medium text-on-surface-variant hover:bg-white/50">Half</button>
+<button class="flex-1 py-2 text-label-md font-medium text-on-surface-variant hover:bg-white/50">Absent</button>
+</div>
+</div>
+<div class="col-span-2 flex items-center justify-center gap-3">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg hover:bg-surface-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="font-title-lg text-title-lg min-w-[60px] text-center">2.5 hrs</span>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg hover:bg-surface-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<div class="col-span-2 px-4">
+<div class="relative bg-error-container/20 rounded-lg border border-error/10">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">₹</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-right pr-3 h-10 font-label-lg text-on-error-container placeholder:text-error/30" placeholder="0" type="number" value="200"/>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Today:</span>
+<span class="font-headline-md text-primary tracking-tight">₹853.12</span>
+</div>
+</div>
+</div>
+<!-- Worker Row 2 -->
+<div class="grid grid-cols-1 md:grid-cols-12 items-center px-4 py-4 gap-4 md:gap-0 hover:bg-surface-container-lowest transition-colors">
+<div class="col-span-3 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed font-bold">AS</div>
+<div>
+<p class="font-title-lg text-body-lg font-bold text-on-surface">Amit Singh</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Helper • #WM-405</p>
+</div>
+</div>
+<div class="col-span-3">
+<div class="flex bg-surface-container-high rounded-lg p-1 w-full max-w-[280px] mx-auto">
+<button class="flex-1 py-2 text-label-md font-medium text-on-surface-variant hover:bg-white/50">Full</button>
+<button class="flex-1 py-2 text-label-md font-bold rounded-lg bg-white shadow-sm text-primary">Half</button>
+<button class="flex-1 py-2 text-label-md font-medium text-on-surface-variant hover:bg-white/50">Absent</button>
+</div>
+</div>
+<div class="col-span-2 flex items-center justify-center gap-3">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg hover:bg-surface-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="font-title-lg text-title-lg min-w-[60px] text-center">0.0 hrs</span>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg hover:bg-surface-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<div class="col-span-2 px-4">
+<div class="relative bg-surface-container-highest rounded-lg border border-outline-variant">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">₹</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-right pr-3 h-10 font-label-lg text-on-surface placeholder:text-outline-variant" placeholder="0" type="number"/>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Today:</span>
+<span class="font-headline-md text-primary tracking-tight">₹425.00</span>
+</div>
+</div>
+</div>
+<!-- Worker Row 3 (Absent) -->
+<div class="grid grid-cols-1 md:grid-cols-12 items-center px-4 py-4 gap-4 md:gap-0 hover:bg-surface-container-lowest transition-colors opacity-75">
+<div class="col-span-3 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-outline-variant flex items-center justify-center text-on-surface-variant font-bold">VS</div>
+<div>
+<p class="font-title-lg text-body-lg font-bold text-on-surface">Vikram Sharma</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Electrician • #WM-409</p>
+</div>
+</div>
+<div class="col-span-3">
+<div class="flex bg-surface-container-high rounded-lg p-1 w-full max-w-[280px] mx-auto">
+<button class="flex-1 py-2 text-label-md font-medium text-on-surface-variant hover:bg-white/50">Full</button>
+<button class="flex-1 py-2 text-label-md font-medium text-on-surface-variant hover:bg-white/50">Half</button>
+<button class="flex-1 py-2 text-label-md font-bold rounded-lg bg-white shadow-sm text-error">Absent</button>
+</div>
+</div>
+<div class="col-span-2 flex items-center justify-center gap-3 grayscale pointer-events-none">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="font-title-lg text-title-lg min-w-[60px] text-center">0.0 hrs</span>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<div class="col-span-2 px-4">
+<div class="relative bg-surface-container-highest rounded-lg border border-outline-variant">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">₹</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-right pr-3 h-10 font-label-lg text-on-surface placeholder:text-outline-variant" disabled="" placeholder="0" type="number"/>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Today:</span>
+<span class="font-headline-md text-on-surface-variant tracking-tight">₹0.00</span>
+</div>
+</div>
+</div>
+<!-- Worker Row 4 -->
+<div class="grid grid-cols-1 md:grid-cols-12 items-center px-4 py-4 gap-4 md:gap-0 hover:bg-surface-container-lowest transition-colors">
+<div class="col-span-3 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold">MD</div>
+<div>
+<p class="font-title-lg text-body-lg font-bold text-on-surface">Manoj Das</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Plumber • #WM-412</p>
+</div>
+</div>
+<div class="col-span-3">
+<div class="flex bg-surface-container-high rounded-lg p-1 w-full max-w-[280px] mx-auto">
+<button class="flex-1 py-2 text-label-md font-bold rounded-lg bg-white shadow-sm text-primary">Full</button>
+<button class="flex-1 py-2 text-label-md font-medium text-on-surface-variant hover:bg-white/50">Half</button>
+<button class="flex-1 py-2 text-label-md font-medium text-on-surface-variant hover:bg-white/50">Absent</button>
+</div>
+</div>
+<div class="col-span-2 flex items-center justify-center gap-3">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg hover:bg-surface-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="font-title-lg text-title-lg min-w-[60px] text-center">1.0 hrs</span>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg hover:bg-surface-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<div class="col-span-2 px-4">
+<div class="relative bg-surface-container-highest rounded-lg border border-outline-variant">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">₹</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-right pr-3 h-10 font-label-lg text-on-surface placeholder:text-outline-variant" placeholder="0" type="number" value="50"/>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Today:</span>
+<span class="font-headline-md text-primary tracking-tight">₹762.50</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell & Action -->
+<div class="fixed bottom-0 left-0 w-full z-50">
+<!-- Floating Primary Action Bar -->
+<div class="bg-white/80 backdrop-blur-md border-t border-zinc-200 dark:border-zinc-800 px-4 py-4 flex items-center justify-between">
+<div class="hidden md:flex flex-col">
+<span class="text-xs uppercase tracking-widest text-zinc-500 font-bold">Total Payout Today</span>
+<span class="text-xl font-black text-indigo-900">₹14,242.00</span>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary px-8 h-12 rounded-full font-bold shadow-lg flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">save</span>
+                Save 12 Records
+            </button>
+</div>
+<!-- BottomNavBar Components -->
+<nav class="bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 flex justify-around items-center px-2 py-3 shadow-[0_-2px_10px_rgba(0,0,0,0.05)] dark:shadow-none">
+<a class="flex flex-col items-center justify-center text-zinc-500 dark:text-zinc-400 px-6 py-1 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 dark:text-zinc-400 px-6 py-1 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Workers</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/40 text-indigo-900 dark:text-indigo-100 rounded-lg px-6 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit_calendar</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Daily Entry</span>
+</a>
+</nav>
+</div>
+<!-- Responsive Toast Feedback (Offline-First Ready) -->
+<div class="fixed bottom-32 left-1/2 -translate-x-1/2 z-[60] hidden">
+<div class="bg-zinc-800 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl">
+<span class="material-symbols-outlined text-green-400">check_circle</span>
+<span class="font-label-lg">Attendance saved locally</span>
+</div>
+</div>
+</body></html>

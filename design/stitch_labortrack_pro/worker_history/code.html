@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#cfe6f2",
+                    "on-tertiary-fixed": "#390c00",
+                    "surface-dim": "#dbd9e1",
+                    "primary": "#000666",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f5f2fb",
+                    "surface-container-highest": "#e4e1ea",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#b4cad6",
+                    "on-primary-fixed": "#000767",
+                    "on-surface": "#1b1b21",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#454652",
+                    "surface-tint": "#4c56af",
+                    "primary-fixed": "#e0e0ff",
+                    "inverse-on-surface": "#f2eff8",
+                    "on-primary-container": "#8690ee",
+                    "on-secondary-container": "#526772",
+                    "outline": "#767683",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb59d",
+                    "surface-variant": "#e4e1ea",
+                    "inverse-surface": "#303036",
+                    "on-primary-fixed-variant": "#343d96",
+                    "tertiary-fixed": "#ffdbd0",
+                    "secondary": "#4c616c",
+                    "surface-container": "#efecf5",
+                    "secondary-fixed": "#cfe6f2",
+                    "background": "#fbf8ff",
+                    "inverse-primary": "#bdc2ff",
+                    "on-secondary-fixed": "#071e27",
+                    "outline-variant": "#c6c5d4",
+                    "surface-bright": "#fbf8ff",
+                    "surface-container-high": "#eae7ef",
+                    "on-secondary-fixed-variant": "#354a53",
+                    "on-tertiary-container": "#e17c5a",
+                    "tertiary": "#380b00",
+                    "tertiary-container": "#5c1800",
+                    "primary-fixed-dim": "#bdc2ff",
+                    "on-tertiary-fixed-variant": "#7b2e12",
+                    "primary-container": "#1a237e",
+                    "surface": "#fbf8ff",
+                    "on-error": "#ffffff",
+                    "on-background": "#1b1b21"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "margin-tablet": "24px",
+                    "touch-target": "48px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbf8ff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-white dark:bg-zinc-900 shadow-sm dark:shadow-none border-b border-zinc-200 dark:border-zinc-800 fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-4 h-14 md:h-16">
+<div class="flex items-center gap-4">
+<button class="active:opacity-70 transition-opacity duration-100 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full">
+<span class="material-symbols-outlined text-indigo-900 dark:text-indigo-400">arrow_back</span>
+</button>
+<span class="text-lg font-black tracking-tight text-indigo-900 dark:text-indigo-100">LaborTrack Pro</span>
+</div>
+<div class="flex gap-2">
+<button class="active:opacity-70 transition-opacity duration-100 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full">
+<span class="material-symbols-outlined text-indigo-900 dark:text-indigo-400">filter_list</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-40 px-4 max-w-4xl mx-auto space-y-6">
+<!-- Worker Identity Surface -->
+<section class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-3xl" data-weight="fill">person</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">RAJU</h1>
+<p class="font-label-lg text-label-lg text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">payments</span>
+                        Base: ₹650 / day
+                    </p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 md:flex-none px-6 py-3 bg-primary text-on-primary rounded-lg font-label-lg text-label-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                    Export CSV
+                </button>
+</div>
+</section>
+<!-- Navigation Tabs -->
+<nav class="flex border-b border-outline-variant">
+<button class="px-6 py-3 border-b-2 border-primary text-primary font-bold text-label-lg">History</button>
+<button class="px-6 py-3 text-on-surface-variant hover:bg-surface-container font-label-lg">Summary</button>
+</nav>
+<!-- Analytics Overview Cards (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">TOTAL EARNED</p>
+<p class="font-headline-md text-headline-md text-primary">₹18,450</p>
+</div>
+<div class="bg-error-container p-4 rounded-xl border border-outline-variant">
+<p class="font-label-md text-label-md text-on-error-container mb-1">TOTAL UPAD</p>
+<p class="font-headline-md text-headline-md text-on-error-container">₹4,500</p>
+</div>
+<div class="bg-primary-container p-4 rounded-xl border border-outline-variant">
+<p class="font-label-md text-label-md text-on-primary-container mb-1">BALANCE PAYABLE</p>
+<p class="font-headline-md text-headline-md text-on-primary-container">₹13,950</p>
+</div>
+</div>
+<!-- History List -->
+<section class="space-y-4">
+<div class="flex justify-between items-center px-2">
+<h2 class="font-title-lg text-title-lg text-on-surface">Work Log</h2>
+<span class="font-label-md text-label-md text-on-surface-variant">JANUARY 2024</span>
+</div>
+<div class="space-y-2">
+<!-- Entry 1 -->
+<div class="bg-white p-4 rounded-lg border border-outline-variant flex justify-between items-center hover:bg-surface-container-lowest transition-colors">
+<div class="flex gap-4 items-center">
+<div class="text-center bg-surface-container px-3 py-1 rounded">
+<p class="font-label-md text-label-md text-on-surface-variant">JAN</p>
+<p class="font-title-lg text-title-lg text-on-surface">13</p>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-bold text-on-surface">1 Day Full Shift</p>
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">timer</span> 4h OT
+                            </p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-primary">₹975</p>
+<p class="font-label-md text-label-md text-error flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-xs">arrow_downward</span> ₹500 Upad
+                        </p>
+</div>
+</div>
+<!-- Entry 2 -->
+<div class="bg-white p-4 rounded-lg border border-outline-variant flex justify-between items-center hover:bg-surface-container-lowest transition-colors">
+<div class="flex gap-4 items-center">
+<div class="text-center bg-surface-container px-3 py-1 rounded">
+<p class="font-label-md text-label-md text-on-surface-variant">JAN</p>
+<p class="font-title-lg text-title-lg text-on-surface">12</p>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-bold text-on-surface">1 Day Full Shift</p>
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">timer</span> 0h OT
+                            </p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-primary">₹650</p>
+<p class="font-label-md text-label-md text-on-surface-variant italic">No Deductions</p>
+</div>
+</div>
+<!-- Entry 3 (Upad Card) -->
+<div class="bg-error-container/30 border-l-4 border-error p-4 rounded-lg flex justify-between items-center">
+<div class="flex gap-4 items-center">
+<div class="text-center bg-error-container px-3 py-1 rounded">
+<p class="font-label-md text-label-md text-on-error-container">JAN</p>
+<p class="font-title-lg text-title-lg text-on-error-container">11</p>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-bold text-on-error-container">Advance Payment (Upad)</p>
+<p class="font-label-md text-label-md text-on-error-container">Medical Emergency</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-error">- ₹2,000</p>
+</div>
+</div>
+<!-- Entry 4 -->
+<div class="bg-white p-4 rounded-lg border border-outline-variant flex justify-between items-center hover:bg-surface-container-lowest transition-colors">
+<div class="flex gap-4 items-center">
+<div class="text-center bg-surface-container px-3 py-1 rounded">
+<p class="font-label-md text-label-md text-on-surface-variant">JAN</p>
+<p class="font-title-lg text-title-lg text-on-surface">10</p>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-bold text-on-surface">0.5 Day Half Shift</p>
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">timer</span> 2h OT
+                            </p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-primary">₹475</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Summary Sticky Footer -->
+<footer class="fixed bottom-14 md:bottom-0 left-0 w-full bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 p-4 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] z-40">
+<div class="max-w-4xl mx-auto flex justify-between items-center">
+<div class="flex gap-6">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Earned</p>
+<p class="font-title-lg text-title-lg text-on-surface">₹18,450</p>
+</div>
+<div class="hidden sm:block border-l border-outline-variant h-10 self-center"></div>
+<div>
+<p class="font-label-md text-label-md text-error uppercase tracking-wider">Upad</p>
+<p class="font-title-lg text-title-lg text-error">₹4,500</p>
+</div>
+</div>
+<div class="text-right bg-indigo-50 dark:bg-indigo-900/40 px-4 py-2 rounded-lg border border-indigo-100 dark:border-indigo-800">
+<p class="font-label-md text-label-md text-primary dark:text-indigo-300 uppercase tracking-wider font-bold">Balance</p>
+<p class="font-headline-md text-headline-md text-indigo-900 dark:text-indigo-100">₹13,950</p>
+</div>
+</div>
+</footer>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-2 py-3 bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 z-50">
+<a class="flex flex-col items-center justify-center text-zinc-500 dark:text-zinc-400 px-6 py-1 hover:bg-zinc-50 dark:hover:bg-zinc-800 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/40 text-indigo-900 dark:text-indigo-100 rounded-lg px-6 py-1 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-weight="fill">group</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Workers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 dark:text-zinc-400 px-6 py-1 hover:bg-zinc-50 dark:hover:bg-zinc-800 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">edit_calendar</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Daily Entry</span>
+</a>
+</nav>
+</body></html>

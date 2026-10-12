@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Worker Management - LaborTrack Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#cfe6f2",
+                    "on-tertiary-fixed": "#390c00",
+                    "surface-dim": "#dbd9e1",
+                    "primary": "#000666",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f5f2fb",
+                    "surface-container-highest": "#e4e1ea",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#b4cad6",
+                    "on-primary-fixed": "#000767",
+                    "on-surface": "#1b1b21",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#454652",
+                    "surface-tint": "#4c56af",
+                    "primary-fixed": "#e0e0ff",
+                    "inverse-on-surface": "#f2eff8",
+                    "on-primary-container": "#8690ee",
+                    "on-secondary-container": "#526772",
+                    "outline": "#767683",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb59d",
+                    "surface-variant": "#e4e1ea",
+                    "inverse-surface": "#303036",
+                    "on-primary-fixed-variant": "#343d96",
+                    "tertiary-fixed": "#ffdbd0",
+                    "secondary": "#4c616c",
+                    "surface-container": "#efecf5",
+                    "secondary-fixed": "#cfe6f2",
+                    "background": "#fbf8ff",
+                    "inverse-primary": "#bdc2ff",
+                    "on-secondary-fixed": "#071e27",
+                    "outline-variant": "#c6c5d4",
+                    "surface-bright": "#fbf8ff",
+                    "surface-container-high": "#eae7ef",
+                    "on-secondary-fixed-variant": "#354a53",
+                    "on-tertiary-container": "#e17c5a",
+                    "tertiary": "#380b00",
+                    "tertiary-container": "#5c1800",
+                    "primary-fixed-dim": "#bdc2ff",
+                    "on-tertiary-fixed-variant": "#7b2e12",
+                    "primary-container": "#1a237e",
+                    "surface": "#fbf8ff",
+                    "on-error": "#ffffff",
+                    "on-background": "#1b1b21"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "margin-tablet": "24px",
+                    "touch-target": "48px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fbf8ff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-zinc-900 shadow-sm dark:shadow-none fixed top-0 w-full z-50 border-b border-zinc-200 dark:border-zinc-800 h-14 md:h-16 flex justify-between items-center px-4">
+<div class="flex items-center gap-4">
+<button class="text-indigo-900 dark:text-indigo-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-lg font-black tracking-tight text-indigo-900 dark:text-indigo-100 font-inter antialiased tracking-wide">LaborTrack Pro</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-indigo-900 dark:text-indigo-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</header>
+<main class="pt-20 pb-24 px-4 md:px-8 max-w-4xl mx-auto">
+<!-- Page Title & Search Section -->
+<section class="mb-8 space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">Worker Management</h2>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full h-12 pl-12 pr-4 bg-[#EEEEEE] border-b-2 border-transparent focus:border-primary rounded-t-lg focus:outline-none transition-all font-body-lg text-body-lg" placeholder="Search by name, site, or skill..." type="text"/>
+</div>
+</section>
+<!-- Stats Chips Row -->
+<div class="flex gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+<span class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-lg text-label-lg whitespace-nowrap">All Workers (42)</span>
+<span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-label-lg text-label-lg whitespace-nowrap">Present (38)</span>
+<span class="bg-error-container text-on-error-container px-4 py-2 rounded-full font-label-lg text-label-lg whitespace-nowrap">Absent (4)</span>
+</div>
+<!-- Worker Directory Grid -->
+<div class="space-y-4">
+<!-- Worker Card 1 -->
+<article class="bg-white rounded-xl shadow-sm border border-outline-variant hover:shadow-md transition-shadow cursor-pointer p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">RAJU</h3>
+<p class="font-label-md text-label-md text-outline">ID: LT-1024 • SKILLED MASON</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:flex md:flex-col items-start md:items-end gap-2">
+<div class="font-label-lg text-label-lg bg-surface-container px-3 py-1 rounded">
+<span class="text-outline">Base:</span> <span class="text-on-surface font-bold">₹650</span>
+<span class="mx-2 text-outline-variant">|</span>
+<span class="text-outline">OT:</span> <span class="text-on-surface font-bold">₹81.25</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1">
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="ml-2 font-label-md text-label-md text-outline uppercase tracking-wider">Attendance</span>
+</div>
+</div>
+</article>
+<!-- Worker Card 2 -->
+<article class="bg-white rounded-xl shadow-sm border border-outline-variant hover:shadow-md transition-shadow cursor-pointer p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">DEEPAK</h3>
+<p class="font-label-md text-label-md text-outline">ID: LT-1031 • HELPER</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:flex md:flex-col items-start md:items-end gap-2">
+<div class="font-label-lg text-label-lg bg-surface-container px-3 py-1 rounded">
+<span class="text-outline">Base:</span> <span class="text-on-surface font-bold">₹450</span>
+<span class="mx-2 text-outline-variant">|</span>
+<span class="text-outline">OT:</span> <span class="text-on-surface font-bold">₹56.25</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1">
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="ml-2 font-label-md text-label-md text-outline uppercase tracking-wider">Perfect</span>
+</div>
+</div>
+</article>
+<!-- Worker Card 3 - Upad/Advance Highlight -->
+<article class="bg-white rounded-xl shadow-sm border-l-4 border-l-error border border-outline-variant hover:shadow-md transition-shadow cursor-pointer p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-title-lg text-title-lg text-on-surface">MUKESH</h3>
+<span class="bg-error-container text-on-error-container text-[10px] px-2 py-0.5 rounded font-bold uppercase">Pending Upad</span>
+</div>
+<p class="font-label-md text-label-md text-outline">ID: LT-1088 • CARPENTER</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:flex md:flex-col items-start md:items-end gap-2">
+<div class="font-label-lg text-label-lg bg-surface-container px-3 py-1 rounded">
+<span class="text-outline">Base:</span> <span class="text-on-surface font-bold">₹700</span>
+<span class="mx-2 text-outline-variant">|</span>
+<span class="text-outline">OT:</span> <span class="text-on-surface font-bold">₹87.50</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1">
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+<span class="ml-2 font-label-md text-label-md text-outline uppercase tracking-wider">Mixed</span>
+</div>
+</div>
+</article>
+<!-- Worker Card 4 -->
+<article class="bg-white rounded-xl shadow-sm border border-outline-variant hover:shadow-md transition-shadow cursor-pointer p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">SANTOSH</h3>
+<p class="font-label-md text-label-md text-outline">ID: LT-1102 • PLUMBER</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:flex md:flex-col items-start md:items-end gap-2">
+<div class="font-label-lg text-label-lg bg-surface-container px-3 py-1 rounded">
+<span class="text-outline">Base:</span> <span class="text-on-surface font-bold">₹650</span>
+<span class="mx-2 text-outline-variant">|</span>
+<span class="text-outline">OT:</span> <span class="text-on-surface font-bold">₹81.25</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1">
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+<span class="ml-2 font-label-md text-label-md text-outline uppercase tracking-wider">Strong</span>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed right-6 bottom-24 w-14 h-14 bg-primary text-on-primary rounded-xl shadow-xl flex items-center justify-center active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-2 py-3 bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 shadow-[0_-2px_10px_rgba(0,0,0,0.05)] z-50">
+<a class="flex flex-col items-center justify-center text-zinc-500 dark:text-zinc-400 px-6 py-1 hover:bg-zinc-50 dark:hover:bg-zinc-800 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/40 text-indigo-900 dark:text-indigo-100 rounded-lg px-6 py-1 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Workers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 dark:text-zinc-400 px-6 py-1 hover:bg-zinc-50 dark:hover:bg-zinc-800 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">edit_calendar</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Daily Entry</span>
+</a>
+</nav>
+</body></html>
